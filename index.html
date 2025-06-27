@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhyey's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: white;
+            cursor: pointer;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85px;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .sidebar p {
+            margin: 20px;
+            font-size: 10px;
+            align-items: center;
+            padding-right: 10px;
+            border-bottom: 10px;
+
+        }
+
+        .sidebar .icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 90px);
+            width: 100%;
+        }
+
+        .sidebar .icon-item {
+            position: relative;
+            padding: 15px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar .icon-item::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar .icon-item:last-child::after {
+            display: none;
+        }
+
+        .sidebar a {
+            font-size: x-large;
+            color: #111;
+        }
+
+        .logo p {
+            font-size: 45px;
+            background-color: rgb(255, 147, 1);
+            color: #fff;
+            font-weight: bold;
+            width: 85px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0;
+        }
+
+        .hero .contact-bar {
+            width: 100%;
+            margin: 0 auto;
+            color: #0a0a0a;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 150px;
+            top: 10px;
+            position: absolute;
+            left: 0;
+            z-index: 5;
+            padding-left: 70px;
+            gap: 60px;
+            font-weight: 600px;
+
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            padding-left: 45px;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            max-width: 60%;
+            padding-right: 50px;
+            z-index: 2;
+            padding-top: 40px;
+            flex: 1 1 100%;
+        }
+
+        .hero-text h6 {
+            font-size: 28px;
+            margin: 2px 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero-text h3 {
+            font-size: 30px;
+            color: rgb(255, 147, 1);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #777;
+            padding-right: 80px;
+            font-weight: 1000px;
+        }
+
+        .hero-text button {
+            margin-top: 10px;
+            padding: 12px 24px;
+            background-color: #111;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border-radius: 5px;
+        }
+
+        .hero-text button:hover {
+            transform: scale(1.1);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 20px;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center left;
+            transform: scale(1.1);
+
+        }
+
+        .hero-image img:hover {
+            transition: all 0.3s ease;
+            transform: scale(1.05);
+        }
+
+        section {
+            margin-left: 80px;
+            padding: 80px 50px;
+        }
+
+        .about {
+            padding: 40px 50px;
+            background-color: white;
+        }
+
+        .about-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            padding: 20px 0px;
+            padding-left: 0px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .profile-left {
+            text-align: center;
+        }
+
+        .profile-img {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin: 0 auto;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 70%;
+            border: 5px solid rgb(255, 147, 1);
+        }
+
+        .social-icons {
+            position: absolute;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            position: relative;
+
+        }
+
+
+        .social-icons a:hover {
+            background-color: rgb(255, 147, 1);
+            transform: scale(1.2);
+        }
+
+        .social-icons a.facebook {
+            position: absolute;
+            top: -45px;
+            left: 75px;
+        }
+
+        .social-icons a.pinterest {
+            position: absolute;
+            top: -45px;
+            left: 245px;
+        }
+
+        .social-icons a.instagram {
+            position: absolute;
+            top: -15px;
+            left: 160px;
+        }
+
+        .social-icons a.twitter {
+            position: absolute;
+            top: -25px;
+            left: 115px;
+        }
+
+        .social-icons a.linked-in {
+            position: absolute;
+            top: -25px;
+            left: 205px;
+        }
+
+        .profile-left h3 {
+            margin-top: 30px;
+            font-weight: normal;
+        }
+
+        .profile-left h1 {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 34px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+
+        .profile-right {
+            flex: 1;
+            padding: 30px 60px;
+        }
+
+        .profile-right h2 span {
+            font-size: 34px;
+            font-weight: 1000;
+            padding: 4px 0px;
+            border-radius: 8px;
+            color: black;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .profile-right p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            color: #777;
+            font-weight: 400px;
+            font-style: Rubik light;
+        }
+
+        .bio-details {
+            display: flex;
+            gap: 45px;
+        }
+
+        .bio-details .left-bio p,
+        .bio-details .right-bio p {
+            margin: 4px 0;
+        }
+
+        .bio-details .left-bio strong,
+        .bio-details .right-bio strong {
+            color: #111;
+        }
+
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .what-I-do {
+            flex: 1;
+            padding: 100px 0px;
+        }
+
+        .section-title {
+            font-size: 50px;
+            font-weight: 400px;
+            position: relative;
+            padding-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .section-title .highlight-circle {
+            width: 60px;
+            height: 60px;
+            background: rgb(255, 147, 1);
+            border-radius: 50%;
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .cards {
+            display: flex;
+            gap: 25px;
+            margin-top: 50px;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 30px 20px;
+            width: 350px;
+            height: 300px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-circle {
+            width: 150px;
+            height: 120px;
+            background-color: rgb(255, 147, 1);
+            border-bottom-right-radius: 170px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 2px;
+        }
+
+        .card h3 {
+            margin: 120px 20px;
+            font-size: 22px;
+            font-weight: 1000px;
+        }
+
+        .card:hover {
+            background-color: rgb(255, 147, 1);
+            color: white;
+        }
+
+        .card:hover h3,
+        .card:hover p {
+            color: white;
+        }
+
+        .card:hover .icon-circle {
+            background-color: black;
+            color: white;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: -35%;
+            padding-left: 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bolder;
+            margin: 40px 0 20px 20px;
+            position: relative;
+        }
+
+        .experience-section {
+            padding: 20px;
+        }
+
+        .experience-card {
+            background: #f8f8ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .experience-card .left {
+            width: 40%;
+        }
+
+        .experience-card .right {
+            width: 70%;
+        }
+
+        .experience-card h3,
+        .experience-card h4 {
+            margin: 0 0 5px;
+            font-weight: 400px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .experience-card .right p {
+            color: #777;
+            font-weight: 400px;
+        }
+
+        .company-location,
+        .date {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .badge {
+            background-color: #ff9900;
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .badge:hover {
+            transform: scale(1.1);
+        }
+
+        .left-card h2 {
+            margin-bottom: 20px;
+            font-weight: bolder;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .edu-block {
+            margin-bottom: 35px;
+        }
+
+        .edu-block h3 {
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: 1000px;
+        }
+
+        .edu-block p {
+            color: #777;
+            margin: 0;
+            font-weight: 100px;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 140px 20px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .left-card {
+            background: #f5f5ff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 100px;
+            max-width: 400px;
+            margin-top: 70px;
+            margin-left: -480px;
+            margin-right: -50px;
+        }
+
+        .left-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .skills-section {
+            flex: 1;
+            min-width: 500px;
+            max-width: 500px;
+            margin-top: 100px;
+        }
+
+
+        .skill {
+            margin-bottom: 30px;
+        }
+
+        .skill-name {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .skill-percent {
+            font-size: 25px;
+            font-weight: 1000;
+            float: left;
+            margin-left: -80px;
+            margin-top: -15px;
+        }
+
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 1px;
+            height: 10px;
+            margin-top: 8px;
+        }
+
+        .progress {
+            height: 10px;
+            background-color: orange;
+            width: 0;
+            border-radius: 1px;
+        }
+
+        .masonry {
+            column-count: 3;
+            column-gap: 1.3rem;
+            padding: 0.9rem;
+            margin-left: -20px;
+        }
+
+        .item {
+            background: white;
+            border-radius: 0px;
+            margin-bottom: 1rem;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+
+        .item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.5);
+        }
+
+        .item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem;
+        }
+
+        .overlay .text {
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item:hover .overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .overlay .text h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 700;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .overlay .text p {
+            margin: 10px 0 0 0;
+            font-size: 0.9rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .overlay .icon {
+            align-self: flex-end;
+            padding-bottom: 90px;
+            width: 50px;
+            height: 10px;
+            object-fit: cover;
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .contact-section {
+            padding: 60px 60px;
+            background: white;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            flex-wrap: nowrap;
+            padding: 20px;
+            border-radius: 0;
+            margin-left: -45px;
+        }
+
+
+        .contact-left {
+            flex: 0 0 40%;
+        }
+
+        .contact-right {
+            flex: 0 0 60%;
+        }
+
+        .contact-left h2 {
+            margin-bottom: 10px;
+            font-size: 35px;
+        }
+
+        .contact-details p {
+            margin: 10px 0;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bolder;
+            color: #111;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            color: black;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .contact-right {
+            max-width: 700px;
+            margin: auto;
+
+        }
+
+        .contact-right h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .contact-right form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-right .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-right .row input {
+            flex: 1;
+        }
+
+        .contact-right input,
+        .contact-right textarea {
+            padding: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .contact-right textarea {
+            resize: vertical;
+        }
+
+        .contact-right button {
+            width: fit-content;
+            background-color: #0a0a0a;
+            color: white;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-right button:hover {
+            transform: scale(1.05);
+        }
+
+        .iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        .portfolio {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            color: #777;
+            margin-left: -5px;
+            font-weight: 1000px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            max-width: 90%;
+            max-height: 80%;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .modal-content.zoomed {
+            transform: scale(1.8);
+            cursor: zoom-out;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .filter-btn.active {
+            color: #ff9900;
+        }
+
+        .icon-item a.active i {
+            color: #ff9900 !important;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text,
+        .profile-left,
+        .profile-right,
+        .experience-card,
+        .card,
+        .edu-block {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .hero-image img,
+        .profile-img img {
+            animation: zoomIn 1s ease forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+
+
+        @media (max-width: 1200px) {
+
+
+            .hero {
+                padding-left: 30px;
+            }
+
+            .hero-text {
+                max-width: 55%;
+            }
+
+            .hero .contact-bar {
+                padding: 30px 80px 30px 100px;
+            }
+        }
+
+
+        @media (max-width: 992px) {
+
+
+            .hero {
+                position: relative;
+                padding-left: 100px;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+
+            .hero-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .hero-image img {
+                object-fit: cover;
+                opacity: 0.1 !important;
+                transform: none;
+            }
+
+            .hero-text {
+                position: relative;
+                z-index: 2;
+                max-width: 80%;
+                padding-right: 0;
+                padding: 30px;
+                border-radius: 10px;
+            }
+
+            .hero .contact-bar {
+                position: relative;
+                z-index: 2;
+                padding: 20px 30px 20px 100px;
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .hero-text {
+                max-width: 90%;
+            }
+
+            .hero-text h6 {
+                font-size: 24px;
+            }
+
+            .hero-text h3 {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+
+            .hero {
+                padding-left: 85px;
+
+            }
+
+            .hero-text {
+                max-width: 95%;
+                padding: 20px;
+            }
+
+            .hero-text h6 {
+                font-size: 20px;
+            }
+
+            .hero-text h3 {
+                font-size: 22px;
+            }
+
+            .hero .contact-bar {
+                padding-left: 85px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                width: 60px;
+            }
+
+            .sidebar p {
+                margin: 15px;
+            }
+
+            .logo p {
+                width: 60px;
+                height: 60px;
+                font-size: 35px;
+            }
+
+            .hero {
+                padding-left: 80px;
+            }
+
+            .hero .contact-bar {
+                padding-left: 80px;
+            }
+
+            .sidebar a {
+                font-size: large;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sidebar {
+                width: 50px;
+            }
+
+            .logo p {
+                width: 50px;
+                height: 50px;
+                font-size: 30px;
+            }
+
+            .hero {
+                padding-left: 70px;
+            }
+
+            .hero .contact-bar {
+                padding-left: 70px;
+                font-size: 14px;
+                gap: 10px;
+            }
+
+            .hero-text h6 {
+                font-size: 24px;
+            }
+
+            .hero-text h3 {
+                font-size: 26px;
+            }
+        }
+
+
+        .menu-btn {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+
+            body,
+            html {
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            .main-content,
+            .hero,
+            .about,
+            .work,
+            .contact,
+            .resume {
+                width: 100%;
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+            }
+        }
+
+
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 9999;
+                background-color: #ff9900;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                color: white;
+                font-size: 20px;
+                display: block;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100%;
+                background-color: #f5f5ff;
+                transition: all 0.3s ease;
+                z-index: 9998;
+                width: 65px;
+            }
+
+            .logo p {
+                font-size: 45px;
+                background-color: rgb(255, 147, 1);
+                color: #fff;
+                font-weight: bold;
+                width: 65px;
+                height: 85px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 0;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .about {
+                padding: 30px 20px;
+            }
+
+            .about-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 0;
+            }
+
+            .profile-left {
+                text-align: center;
+                position: relative;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .social-icons {
+                position: absolute;
+                transform: translateX(-50%);
+                display: flex;
+            }
+
+            .social-icons a {
+                width: 36px;
+                height: 36px;
+                background-color: #000;
+                color: #fff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                border: 2px solid white;
+                position: relative;
+
+            }
+
+
+            .social-icons a:hover {
+                background-color: rgb(255, 147, 1);
+                transform: scale(1.2);
+            }
+
+            .social-icons a.facebook {
+                position: absolute;
+                top: -45px;
+                left: 35px;
+            }
+
+            .social-icons a.pinterest {
+                position: absolute;
+                top: -50px;
+                left: 190px;
+            }
+
+            .social-icons a.instagram {
+                position: absolute;
+                top: -15px;
+                left: 115px;
+            }
+
+            .social-icons a.twitter {
+                position: absolute;
+                top: -25px;
+                left: 75px;
+            }
+
+            .social-icons a.linked-in {
+                position: absolute;
+                top: -25px;
+                left: 155px;
+            }
+
+            .profile-left {
+                padding-bottom: 40px;
+            }
+
+            .profile-left h1 {
+                font-size: 26px;
+            }
+
+            .profile-left h3 {
+                margin-top: 30px;
+                font-size: 18px;
+            }
+
+            .profile-right {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .profile-right h2 span {
+                font-size: 24px;
+            }
+
+            .profile-right p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90% !important;
+                height: auto !important;
+                margin-bottom: 20px;
+            }
+
+            .icon-circle {
+                width: 120px !important;
+                height: 100px !important;
+                font-size: 24px !important;
+            }
+
+            .card h3 {
+                margin: 100px 20px 10px !important;
+                font-size: 20px !important;
+            }
+
+            .card p {
+                font-size: 14px !important;
+                margin-top: 0 !important;
+                padding-right: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 28px !important;
+            }
+
+            .icon-circle {
+                width: 100px !important;
+                height: 80px !important;
+                font-size: 20px !important;
+            }
+
+            .card h3 {
+                margin: 90px 20px 10px !important;
+                font-size: 18px !important;
+            }
+
+            .card p {
+                font-size: 13px !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+
+            .section-title,
+            .card,
+            .skills-container,
+            .left-card,
+            .skills-section,
+            .edu-block {
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            body {
+                margin: 0;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+        }
+
+
+
+        @media (max-width: 1024px) {
+            .skills-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 0px !important;
+                gap: 30px;
+            }
+
+            .left-card {
+                margin: 0 auto;
+                max-width: 90%;
+                margin-top: 20px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .skills-section {
+                margin: 0 auto;
+                max-width: 90%;
+                min-width: unset;
+                margin-top: 40px;
+
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .left-card h2,
+            .skill-name,
+            .skill-percent {
+                font-size: 16px;
+            }
+
+            .skill-percent {
+                font-size: 20px;
+                margin-left: -50px;
+                margin-top: -10px;
+            }
+
+            .edu-block h3 {
+                font-size: 16px;
+            }
+
+            .edu-block p {
+                font-size: 14px;
+            }
+
+            .skills-container {
+                padding: 60px 10px;
+            }
+
+            .progress-bar {
+                height: 8px;
+            }
+
+            .progress {
+                height: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <p>D</p>
+        </div>
+        <div class="icons">
+            <div class="icon-item">
+                <p><a href="#home"><i class="fa fa-home"></i></a></p>
+                <hr>
+                <p><a href="#about"><i class="fa fa-user"></i></a></p>
+                <hr>
+                <p><a href="#resume"><i class="far fa-file-alt"></i></a></p>
+                <hr>
+                <p><a href="#work"><i class="fa fa-briefcase"></i></a></p>
+                <hr>
+                <p><a href="#contact"><i class="fa-solid fa-phone"></i></a></p>
+                <hr>
+                <p><a href="#blog"><i class="fas fa-rss"></i></a></p>
+            </div>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+
+        <div class="contact-bar">
+            <span>+91 93277 06883</span>
+            <span> dhyeydave00007@gmail.com </span>
+            <span style="margin-left: auto;font-size:larger;"><span style="background-color: #ff9900;">EN</span>
+                <span id="FR"> FR </span>
+        </div>
+
+        <div class="hero-text">
+            <p style="color: #111;font-size:20px;font-weight:bold;">Hello, My name is</p>
+            <h6 style="font-size:80px ;">Dhyey Dave</h6>
+            <h3>Full-Stack Developer</h3>
+            <p>I design and develop services for customers of all sizes, specializing in
+                creating stylish, modern
+                websites, web services, and online stores.I design and develop services for customers of all sizes.</p>
+            <br>
+            <a href="https://drive.usercontent.google.com/download?id=16MeiCiAfIxO1I3CxBasI7P0nou3tpn3e&export=download&authuser=0&confirm=t&uuid=2d02c15b-be1f-4442-a6a6-866d2312ff60&at=ALoNOglYruz-pxnpChqkmremf-wD:1749114887049"
+                download><button style="font-size:large;"><b>Download CV</b></button></a>
+        </div>
+        <div class="hero-image">
+            <img src="home-banner.png" alt="Profile Image">
+        </div>
+    </section>
+    <button id="menu-toggle" class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+
+
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="profile-left">
+                <div class="profile-img">
+                    <img src="about.jpg" alt="Profile Picture">
+                    <div class="social-icons">
+                        <a class="facebook" id="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="twitter" id="twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="instagram" id="instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="linked-in" id="linked-in"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="pinterest" id="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <h3>Ux/Ui Designer</h3>
+                <h1>Dhyey Dave</h1>
+            </div>
+
+            <div class="profile-right">
+                <h2 style="padding: 10px -30px;"><span>Biography</span></h2>
+                <br>
+                <p>
+                    I'm a Freelancer Front-end Developer with over 3 years of experience. I'm from San Francisco.
+                    I code and create web elements for amazing people around the world. I like working with new people.
+                    New people, new experiences.
+                </p>
+
+                <p>
+                    I'm a Freelancer Front-end Developer with over 3 years of experience. I'm from San Francisco.
+                    I code and create web elements for amazing people around the world. I like working with new people.
+                    New people, new experiences.
+                </p>
+                <br>
+
+
+                <div class="bio-details">
+                    <div class="left-bio">
+                        <p><strong>Name:</strong> Dhyey Dave</p>
+                        <p><strong>Birthday:</strong> 31st December 2005</p>
+                        <p><strong>Age:</strong> 19 years</p>
+                        <p><strong>Address:</strong> Surat</p>
+                    </div>
+                    <div class="right-bio">
+                        <p><strong>Phone:</strong> (+91) 93277 06883 </p>
+                        <p><strong>Email:</strong> dhyeydave00007@gmail.com </p>
+                        <p><strong>Skype:</strong> dhyey.31</p>
+                        <p><strong>Freelance:</strong> Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="what-I-do">
+            <h2 class="section-title">
+                <span class="highlight-circle"></span>
+                What I do?
+            </h2>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="icon-circle">  
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-display"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3>SEO Marketing</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <section class="experience-section" id="resume">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="experience-card">
+            <div class="left">
+                <h3>Sr. Front-end Engineer</h3>
+                <p class="company-location"><i>Google / Remote</i></p>
+                <p class="date">Feb 2021 - Present</p>
+                <span class="badge">Full Time</span>
+            </div>
+            <div class="right">
+                <h4>Google LLC</h4>
+                <p>
+                    Adipisicing Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+            </div>
+        </div>
+
+        <div class="experience-card">
+            <div class="left">
+                <h3>Visual Designer</h3>
+                <p class="company-location"><i>Ridian / Remote</i></p>
+                <p class="date">Mar 2020 - Present</p>
+                <span class="badge">Part Time</span>
+            </div>
+            <div class="right">
+                <h4>Ridian IT</h4>
+                <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+        <div class="experience-card">
+            <div class="left">
+                <h3>Sr. Front-end Engineer</h3>
+                <p class="company-location"><i>Google / Remote</i></p>
+                <p class="date">Feb 2021 - Present</p>
+                <span class="badge">Part Time</span>
+            </div>
+            <div class="right">
+                <h4>Google LLC</h4>
+                <p>
+                    Adipisicing Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+            </div>
+        </div>
+
+        <div class="skills-container">
+            <h2 style="font-size: 28px;font-family:'Segoe UI', sans-serif;">Education and Skills</h2>
+            <div class="left-card">
+
+                <div class="edu-block">
+                    <h3>Frontend Developer</h3>
+                    <p>2021–Present</p>
+                    <p>XYZ Company</p>
+                </div>
+                <div class="edu-block">
+                    <h3>Internship - Web Developer</h3>
+                    <p>2020–2021</p>
+                    <p>ABC Solutions</p>
+                </div>
+                <div class="edu-block">
+                    <h3>Frontend Developer</h3>
+                    <p>2021–Present</p>
+                    <p>XYZ Company</p>
+                </div>
+            </div>
+
+            <div class="skills-section">
+
+                <div class="skill">
+                    <span class="skill-name">HTML5</span>
+
+                    <div class="progress-bar">
+                        <span class="skill-percent">92%</span>
+                        <div class="progress animate" style="width: 92%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-name">React JS</span>
+
+                    <div class="progress-bar">
+                        <span class="skill-percent">85%</span>
+                        <div class="progress animate" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-name">Vue JS</span>
+
+                    <div class="progress-bar">
+                        <span class="skill-percent">90%</span>
+                        <div class="progress animate" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-name">UI/UX</span>
+                    <div class="progress-bar">
+                        <span class="skill-percent">88%</span>
+                        <div class="progress animate" style="width: 88%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2 style="font-size:xx-large;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">My Portfolio.</h2>
+        <br><br>
+        <div class="portfolio">
+            <span class="filter-btn">All</span>
+            <span class="filter-btn">Branding</span>
+            <span class="filter-btn">Photography</span>
+            <span class="filter-btn">Fashion</span>
+            <span class="filter-btn">Product</span>
+        </div>
+        <div class="masonry">
+            <div class="item" data-title="Golden Hour" data-type="Branding">
+                <img src="p1.jpg" alt="Image 1">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="item" data-title="Waves Splash" data-type="Photography">
+                <img src="p4.jpg" alt="Image 2">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+                </div>
+            </div>
+            <div class="item" data-title="Golden Hour" data-type="Branding">
+                <img src="p7.jpg" alt="Image 1">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="item" data-title="Waves Splash" data-type="Fashion">
+                <img src="p2.jpg" alt="Image 2">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="item" data-title="Golden Hour" data-type="Product">
+                <img src="p5.jpg" alt="Image 1">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="item" data-title="Waves Splash" data-type="Photography">
+                <img src="p8.jpg" alt="Image 2">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+                </div>
+            </div>
+            <div class="item" data-title="Golden Hour" data-type="Product">
+                <img src="p3.jpg" alt="Image 1">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="item" data-title="Waves Splash" data-type="Fashion">
+                <img src="p6.jpg" alt="Image 2">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="item" data-title="Golden Hour" data-type="Branding">
+                <img src="p9.jpg" alt="Image 1">
+                <div class="overlay">
+                    <div class="text">
+                        <h3 class="clickable-title"
+                            data-link="https://dribbble.com/shots/16529339-Beny-Personal-Portfolio-React-Template">
+                            Bottle Illustration</h3>
+                        <p>Figma Shoot</p>
+                    </div>
+                    <div class="icon">
+                        <img src="link.jpg" alt="View" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="image-modal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-left">
+                <h2 style="font-weight: bolder;">What's Your story?</h2>
+                <h2>Get in Touch</h2>
+                <p style="font-size:large; color:#777;font: weight 1000px;">Always available if a good project comes
+                    along. Feel free to
+                    contact us.</p>
+                <div class="contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i> D-504, Silver Plaza Flats, Near Ganesh Mandir, Palanpur Patiya, Rander Road, Surat, 395009.
+                    </p>
+                    <p><i class="fas fa-envelope"></i>dhyeydave00007@gmail.com</p>
+                    <p><i class="fas fa-phone"></i>+91 93277 06883
+                    </p>
+                </div>
+            </div>
+            <div class="contact-right">
+                <h2>Say Something</h2>
+                <form>
+                    <div class="row">
+                        <input type="text" name="name" placeholder="Full name" required />
+                        <input type="email" name="email" placeholder="Email address" required />
+                    </div>
+                    <input type="text" name="subject" placeholder="Subject" required />
+                    <textarea name="comment" rows="5" placeholder="Type comment"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div style="filter: grayscale(100%) contrast(150%);">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d623086.2198610279!2d72.73379842222633!3d21.215403384264597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1748841373653!5m2!1sen!2sin"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const navLinks = document.querySelectorAll(".icon-item a");
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    navLinks.forEach(l => l.classList.remove("active"));
+                    this.classList.add("active");
+                });
+            });
+
+            const toggleBtn = document.getElementById("menu-toggle");
+            const sidebar = document.querySelector(".sidebar");
+            const toggleIcon = toggleBtn.querySelector("i");
+
+            toggleBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("active");
+
+                // Change icon
+                if (sidebar.classList.contains("active")) {
+                    toggleIcon.classList.remove("fa-bars");
+                    toggleIcon.classList.add("fa-times");
+                } else {
+                    toggleIcon.classList.remove("fa-times");
+                    toggleIcon.classList.add("fa-bars");
+                }
+            });
+
+            document.getElementById("FR").addEventListener("click", function () {
+                window.open("Vanshika_CV.pdf");
+            });
+
+            document.getElementById("facebook").addEventListener("click", function () {
+                window.open("https://www.facebook.com/login");
+            });
+
+            document.getElementById("twitter").addEventListener("click", function () {
+                window.open("https://twitter.com/login");
+            });
+
+            document.getElementById("instagram").addEventListener("click", function () {
+                window.open("https://www.instagram.com/accounts/login/?hl=en");
+            });
+
+            document.getElementById("linked-in").addEventListener("click", function () {
+                window.open("https://www.linkedin.com/login");
+            });
+
+            document.getElementById("pinterest").addEventListener("click", function () {
+                window.open("https://www.pinterest.com/login");
+            });
+
+            const filterButtons = document.querySelectorAll(".portfolio .filter-btn");
+            const items = document.querySelectorAll(".masonry .item");
+
+            filterButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const category = button.innerText.toLowerCase();
+
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    button.classList.add("active");
+
+                    items.forEach(item => {
+                        const type = item.getAttribute("data-type").toLowerCase();
+                        item.style.display = (category === "all" || type.includes(category)) ? "block" : "none";
+                    });
+                });
+            });
+
+            const modal = document.getElementById("image-modal");
+            const modalImg = document.getElementById("modal-img");
+            const closeBtn = document.querySelector(".close-btn");
+
+            document.querySelectorAll(".masonry .item").forEach(item => {
+                item.addEventListener("click", () => {
+                    const img = item.querySelector("img");
+                    if (img) {
+                        modal.style.display = "block";
+                        modalImg.src = img.src;
+                        modalImg.classList.remove("zoomed");
+                    }
+                });
+            });
+
+            closeBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            modalImg.addEventListener("click", () => {
+                modalImg.classList.toggle("zoomed");
+            });
+
+            const titles = document.querySelectorAll(".clickable-title");
+
+            titles.forEach(title => {
+                title.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    const link = title.getAttribute("data-link");
+                    if (link) {
+                        window.open(link, "_blank");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
